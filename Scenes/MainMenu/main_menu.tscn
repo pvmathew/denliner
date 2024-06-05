@@ -1,15 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://ns22uoxll5vd"]
+[gd_scene load_steps=3 format=3 uid="uid://ns22uoxll5vd"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_1qi15"]
+
+[sub_resource type="Theme" id="Theme_tbfaw"]
+default_font_size = 40
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_1qi15")
 
-[node name="Button" type="Button" parent="."]
+[node name="Title" type="Label" parent="."]
+offset_left = 934.0
+offset_top = 217.0
+offset_right = 1065.0
+offset_bottom = 272.0
+theme = SubResource("Theme_tbfaw")
+text = "Game?"
+
+[node name="Host" type="Button" parent="."]
+offset_left = 902.0
+offset_top = 379.0
+offset_right = 1089.0
+offset_bottom = 503.0
+text = "Host
+"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 900.0
+offset_top = 524.0
+offset_right = 1092.0
+offset_bottom = 643.0
+text = "Join"
+
+[node name="Close" type="Button" parent="."]
 offset_left = 899.0
 offset_top = 665.0
 offset_right = 1091.0
 offset_bottom = 800.0
 text = "Close"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="NicknameInput" type="LineEdit" parent="."]
+offset_left = 876.0
+offset_top = 309.0
+offset_right = 1119.0
+offset_bottom = 340.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 815.0
+offset_top = 313.0
+offset_right = 866.0
+offset_bottom = 336.0
+text = "Name:"
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Close" to="." method="_on_button_pressed"]
+[connection signal="text_changed" from="NicknameInput" to="." method="_on_nickname_input_text_changed"]
