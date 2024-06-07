@@ -1,5 +1,6 @@
 extends Node
 
+const MAIN_MENU_SCENE_PATH = "res://Scenes/MainMenu/main_menu.tscn"
 const LOBBY_SCENE_PATH = "res://Scenes/Lobby/lobby.tscn"
 
 signal player_connected(player_data)
@@ -52,6 +53,11 @@ func join_session():
 	multiplayer.multiplayer_peer = peer
 	
 	get_tree().change_scene_to_file(LOBBY_SCENE_PATH)
+	
+func leave_session():
+	multiplayer.multiplayer_peer = null
+	get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)
+	
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_data):

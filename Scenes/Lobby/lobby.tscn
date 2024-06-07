@@ -76,7 +76,7 @@ offset_left = 448.0
 offset_top = 672.0
 offset_right = 801.0
 offset_bottom = 871.0
-text = "Close Room"
+text = "Leave Room"
 
 [node name="PlayerList" type="TextEdit" parent="."]
 offset_left = 24.0
