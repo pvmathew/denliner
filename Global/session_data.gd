@@ -1,5 +1,7 @@
 extends Node
 
+const LOBBY_SCENE_PATH = "res://Scenes/Lobby/lobby.tscn"
+
 signal player_connected(player_data)
 signal player_disconnected(peer_id)
 
@@ -28,11 +30,12 @@ func start_session():
 		
 	print("Server started successfully on port 1337")
 	
-	get_tree().set_multiplayer(SceneMultiplayer.new(),self.get_path())
 	multiplayer.multiplayer_peer = peer
 	
 	players[1] = PlayerData.nickname
 	player_connected.emit(1, PlayerData.nickname)
+	
+	get_tree().change_scene_to_file(LOBBY_SCENE_PATH)
 
 func join_session():
 	PlayerData.is_host = false
@@ -46,11 +49,13 @@ func join_session():
 		
 	print("Client connected successfully to 127.0.0.1:1337")
 	
-	get_tree().set_multiplayer(SceneMultiplayer.new(),self.get_path())
 	multiplayer.multiplayer_peer = peer
+	
+	get_tree().change_scene_to_file(LOBBY_SCENE_PATH)
 
 @rpc("any_peer", "reliable")
 func _register_player(new_player_data):
+	print(new_player_data)
 	var new_player_id = multiplayer.get_remote_sender_id()
 	players[new_player_id] = new_player_data
 	player_connected.emit(new_player_id, new_player_data)
