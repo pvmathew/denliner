@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://lcjmljb5gsbv"]
+
+[ext_resource type="Script" path="res://Scenes/Lobby/lobby.gd" id="1_aftci"]
+
+[sub_resource type="Theme" id="Theme_aehvx"]
+default_font_size = 42
+
+[sub_resource type="Theme" id="Theme_scrcu"]
+default_font_size = 42
+
+[node name="Lobby" type="Node2D"]
+script = ExtResource("1_aftci")
+
+[node name="Nickname" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 24.0
+offset_right = 110.0
+offset_bottom = 47.0
+text = "Nickname:"
+
+[node name="Value" type="Label" parent="Nickname"]
+layout_mode = 0
+offset_left = 99.0
+offset_right = 143.0
+offset_bottom = 24.0
+text = "Value
+"
+
+[node name="IsHost" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 55.0
+offset_right = 110.0
+offset_bottom = 78.0
+text = "Is Host?:"
+
+[node name="Value" type="Label" parent="IsHost"]
+layout_mode = 0
+offset_left = 99.0
+offset_right = 143.0
+offset_bottom = 24.0
+text = "Value
+"
+
+[node name="ChatLabel" type="Label" parent="."]
+offset_left = 1427.0
+offset_top = 134.0
+offset_right = 1541.0
+offset_bottom = 192.0
+theme = SubResource("Theme_aehvx")
+text = "Chat?
+"
+
+[node name="ChatLog" type="TextEdit" parent="."]
+offset_left = 1166.0
+offset_top = 204.0
+offset_right = 1763.0
+offset_bottom = 791.0
+editable = false
+
+[node name="MessageInput" type="LineEdit" parent="."]
+offset_left = 1171.0
+offset_top = 814.0
+offset_right = 1644.0
+offset_bottom = 876.0
+
+[node name="Send" type="Button" parent="."]
+offset_left = 1669.0
+offset_top = 830.0
+offset_right = 1756.0
+offset_bottom = 873.0
+text = "Send
+"
+
+[node name="LeaveRoom" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 672.0
+offset_right = 801.0
+offset_bottom = 871.0
+text = "Close Room"
+
+[node name="PlayerList" type="TextEdit" parent="."]
+offset_left = 24.0
+offset_top = 247.0
+offset_right = 319.0
+offset_bottom = 590.0
+editable = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 89.0
+offset_top = 169.0
+offset_right = 236.0
+offset_bottom = 227.0
+theme = SubResource("Theme_scrcu")
+text = "Players"
+
+[connection signal="pressed" from="Send" to="." method="_on_send_pressed"]
+[connection signal="pressed" from="LeaveRoom" to="." method="_on_leave_room_pressed"]

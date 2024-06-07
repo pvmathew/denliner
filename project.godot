@@ -15,6 +15,11 @@ run/main_scene="res://Scenes/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerData="*res://Global/player_data.gd"
+SessionData="*res://Global/session_data.gd"
+
 [display]
 
 window/size/viewport_width=1920

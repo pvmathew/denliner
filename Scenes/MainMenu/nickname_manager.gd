@@ -8,6 +8,7 @@ func load_nickname():
 	if err == OK:
 		if config.has_section_key("player", "nickname"):
 			var nickname = config.get_value("player", "nickname")
+			PlayerData.nickname = nickname
 			return nickname
 	elif err == ERR_FILE_NOT_FOUND:
 		# File does not exist, handle accordingly (e.g., set a default value or ignore)
@@ -23,6 +24,7 @@ func save_nickname(nickname):
 	config.load(CONFIG_FILE_PATH)
 	config.set_value("player", "nickname", nickname)
 	config.save(CONFIG_FILE_PATH)
+	PlayerData.nickname = nickname
 
 func generate_random_nickname():
 	var random_number = randi() % 1000 # Generate a random number between 0 and 999
