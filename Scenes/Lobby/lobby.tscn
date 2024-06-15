@@ -74,8 +74,8 @@ text = "Send
 [node name="LeaveRoom" type="Button" parent="."]
 offset_left = 433.0
 offset_top = 673.0
-offset_right = 786.0
-offset_bottom = 872.0
+offset_right = 777.0
+offset_bottom = 831.0
 text = "Leave Room"
 
 [node name="PlayerList" type="TextEdit" parent="."]
@@ -97,7 +97,7 @@ text = "Players"
 offset_left = 808.0
 offset_top = 671.0
 offset_right = 1137.0
-offset_bottom = 877.0
+offset_bottom = 826.0
 text = "Ready"
 
 [node name="PlayerListVBox" type="VBoxContainer" parent="."]
@@ -105,6 +105,15 @@ offset_left = 366.0
 offset_top = 247.0
 offset_right = 645.0
 offset_bottom = 592.0
+
+[node name="StartGame" type="Button" parent="."]
+visible = false
+offset_left = 430.0
+offset_top = 847.0
+offset_right = 1133.0
+offset_bottom = 1052.0
+disabled = true
+text = "Start Game"
 
 [connection signal="pressed" from="Send" to="." method="_on_send_pressed"]
 [connection signal="pressed" from="LeaveRoom" to="." method="_on_leave_room_pressed"]

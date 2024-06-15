@@ -65,6 +65,12 @@ func toggle_ready():
 	var peer_id = multiplayer.get_unique_id()
 	rpc("change_player_ready", new_value)
 	
+func is_all_ready():
+	for player in players.values():
+		if not player["is_ready"]:
+			return false
+	return true
+	
 @rpc("any_peer", "call_local")
 func change_player_ready(value):
 	print("remote sender id from multipler.get_remote_sender_id: ", multiplayer.get_remote_sender_id())

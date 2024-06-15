@@ -11,6 +11,9 @@ func _ready():
 	$Nickname/Value.text = PlayerData.nickname
 	$"IsHost/Value".text = str(PlayerData.is_host)
 	
+	if PlayerData.is_host:
+		$StartGame.visible = true
+	
 	for player in SessionData.players.values():
 		print(player)
 		$PlayerList.text += player.name + "\n"
@@ -23,7 +26,6 @@ func _ready():
 		player_labels[peer_id] = label
 		print(player_labels)
 		
-
 		
 # UI Signals
 func _on_leave_room_pressed():
@@ -31,13 +33,6 @@ func _on_leave_room_pressed():
 
 func _on_ready_pressed():
 	SessionData.toggle_ready()
-	#var my_peer_id = multiplayer.get_unique_id()
-	#if player_labels.has(multiplayer.get_unique_id()):
-		#var label = player_labels[my_peer_id]
-		#if value:
-			#label.add_theme_color_override("font_color", Color.GREEN)
-		#else:
-			#label.add_theme_color_override("font_color", Color.WHITE)
 
 func _on_send_pressed():
 	print("Send button was pressed. Sending the following message: ", $MessageInput.text)
@@ -73,7 +68,16 @@ func _on_player_ready_changed(peer_id, value):
 			label.add_theme_color_override("font_color", Color.GREEN)
 		else:
 			label.add_theme_color_override("font_color", Color.WHITE)
+			
+	if SessionData.is_all_ready():
+		$StartGame.disabled = false
+	else:
+		$StartGame.disabled = true
 	
 @rpc ("any_peer", "call_local")
 func msg_rpc(name, data):
 	$ChatLog.text += str(name, ":", data, "\n")
+
+
+func _on_start_game_pressed():
+	# Start the game for all players in this lobby
