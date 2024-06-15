@@ -6,6 +6,7 @@ func _ready():
 	SessionData.player_connected.connect(self._on_player_connected)
 	SessionData.player_disconnected.connect(self._on_player_disconnected)
 	SessionData.player_ready_changed.connect(self._on_player_ready_changed)
+	SessionData.game_started.connect(self._on_game_started)
 	
 	# For Debug purposes, shows player info in top left
 	$Nickname/Value.text = PlayerData.nickname
@@ -38,6 +39,9 @@ func _on_send_pressed():
 	print("Send button was pressed. Sending the following message: ", $MessageInput.text)
 	rpc("msg_rpc", PlayerData.nickname, $MessageInput.text)
 	$MessageInput.text = ""
+	
+func _on_start_game_pressed():
+	SessionData.start_game()
 
 # RPC Signals
 func _on_player_connected(peer_id, player_name, ready_value):
@@ -69,15 +73,17 @@ func _on_player_ready_changed(peer_id, value):
 		else:
 			label.add_theme_color_override("font_color", Color.WHITE)
 			
+	print(SessionData.is_all_ready())
+			
 	if SessionData.is_all_ready():
 		$StartGame.disabled = false
 	else:
 		$StartGame.disabled = true
+		
+func _on_game_started():
+	print("Game has started")
+	get_tree().change_scene_to_file("res://Scenes/ThemeSelection/theme_selection.tscn")
 	
 @rpc ("any_peer", "call_local")
 func msg_rpc(name, data):
 	$ChatLog.text += str(name, ":", data, "\n")
-
-
-func _on_start_game_pressed():
-	# Start the game for all players in this lobby

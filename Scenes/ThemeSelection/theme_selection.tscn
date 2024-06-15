@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs3bsjtfhyaak"]
+
+[ext_resource type="Script" path="res://Scenes/ThemeSelection/theme_selection.gd" id="1_yii6x"]
+
+[node name="ThemeSelection" type="Node2D"]
+script = ExtResource("1_yii6x")
+
+[node name="ThemeList" type="VBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(400, 200)
+offset_left = 757.0
+offset_top = 288.0
+offset_right = 1306.0
+offset_bottom = 752.0
+
+[node name="どうぶつ" type="Button" parent="ThemeList"]
+layout_mode = 2
+text = "どうぶつ
+"
+
+[node name="その他？？？" type="Button" parent="ThemeList"]
+layout_mode = 2
+text = "その他？？？"
+
+[node name="LobbyDisclaimer" type="Label" parent="."]
+visible = false
+offset_left = 921.0
+offset_top = 508.0
+offset_right = 1127.0
+offset_bottom = 531.0
+text = "Host is selecting a theme..."

@@ -118,3 +118,4 @@ text = "Start Game"
 [connection signal="pressed" from="Send" to="." method="_on_send_pressed"]
 [connection signal="pressed" from="LeaveRoom" to="." method="_on_leave_room_pressed"]
 [connection signal="pressed" from="Ready" to="." method="_on_ready_pressed"]
+[connection signal="pressed" from="StartGame" to="." method="_on_start_game_pressed"]

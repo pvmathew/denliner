@@ -6,6 +6,7 @@ const LOBBY_SCENE_PATH = "res://Scenes/Lobby/lobby.tscn"
 signal player_connected(player_data)
 signal player_disconnected(peer_id)
 signal player_ready_changed(peer_id, value)
+signal game_started()
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
@@ -66,6 +67,7 @@ func toggle_ready():
 	rpc("change_player_ready", new_value)
 	
 func is_all_ready():
+	print(players.values())
 	for player in players.values():
 		if not player["is_ready"]:
 			return false
@@ -75,9 +77,10 @@ func is_all_ready():
 func change_player_ready(value):
 	print("remote sender id from multipler.get_remote_sender_id: ", multiplayer.get_remote_sender_id())
 	print("They changed their ready state to: ", value)
+	var peer_id = multiplayer.get_remote_sender_id()
+	players[peer_id]["is_ready"] = value
 	player_ready_changed.emit(multiplayer.get_remote_sender_id(), value)
 	
-
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
@@ -106,3 +109,10 @@ func _on_player_disconnected(id):
 	print("Player disconnected: ", id)
 	players.erase(id)
 	player_disconnected.emit(id)
+
+@rpc("any_peer", "call_local")
+func start_game():
+	print("Host is sending a request to start the game")
+	game_started.emit()
+	
+	
