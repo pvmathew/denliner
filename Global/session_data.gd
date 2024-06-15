@@ -56,6 +56,7 @@ func join_session():
 	
 func leave_session():
 	multiplayer.multiplayer_peer = null
+	players = {}
 	get_tree().change_scene_to_file(MAIN_MENU_SCENE_PATH)
 	
 func toggle_ready():
