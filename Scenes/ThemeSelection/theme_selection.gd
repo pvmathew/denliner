@@ -32,10 +32,11 @@ func start_timer():
 	timer.wait_time = 2  # Set the wait time to 10 seconds
 	timer.one_shot = true  # Set to true to auto-reset after timeout
 	timer.connect("timeout", _on_timeout)
-	add_child(timer)  # Add the Timer node to the scene tree
+	add_child(timer)  # Add the Timer node to the scene trzee
 	timer.start()  # Start the timer
 
 func _on_timeout():
-	print("time has run out, scenes to first canvas")
+	print("time has run out, showing canvas")
 	# This method is called when the timer expires
 	# Change to your desired scene after 10 seconds
+	get_tree().change_scene_to_file("res://Scenes/Drawing/first_drawing.tscn")
