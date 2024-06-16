@@ -75,6 +75,7 @@ func is_all_ready():
 	
 @rpc("any_peer", "call_local")
 func change_player_ready(value):
+	print("\n [peer_id]: ", multiplayer.get_unique_id(), ' ||')	
 	print("remote sender id from multipler.get_remote_sender_id: ", multiplayer.get_remote_sender_id())
 	print("They changed their ready state to: ", value)
 	var peer_id = multiplayer.get_remote_sender_id()
@@ -84,6 +85,7 @@ func change_player_ready(value):
 # When a peer connects, send them my player info.
 # This allows transfer of all desired data for each player, not only the unique ID.
 func _on_player_connected(id):
+	print("\n [peer_id]: ", multiplayer.get_unique_id(), ' ||')	
 	print("Player connected: ", id)
 	_register_player.rpc_id(id, PlayerData.nickname, PlayerData.is_ready)
 
@@ -97,6 +99,7 @@ func _register_player(player_name, ready_value):
 	player_connected.emit(peer_id, player_name, ready_value)
 
 func _on_connected_ok():
+	print("\n[peer_id]: ", multiplayer.get_unique_id(), ' ||')
 	print("Connection was made ok")
 	var peer_id = multiplayer.get_unique_id()
 	players[peer_id] = {
@@ -106,12 +109,14 @@ func _on_connected_ok():
 	player_connected.emit(peer_id, PlayerData.nickname, PlayerData.is_ready)
 
 func _on_player_disconnected(id):
+	print("\n [peer_id]: ", multiplayer.get_unique_id(), ' ||')
 	print("Player disconnected: ", id)
 	players.erase(id)
 	player_disconnected.emit(id)
 
 @rpc("any_peer", "call_local")
 func start_game():
+	print("\n [peer_id]: ", multiplayer.get_unique_id(), ' ||')	
 	print("Host is sending a request to start the game")
 	game_started.emit()
 	

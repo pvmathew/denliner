@@ -41,7 +41,7 @@ func _on_send_pressed():
 	$MessageInput.text = ""
 	
 func _on_start_game_pressed():
-	SessionData.start_game()
+	SessionData.rpc("start_game")
 
 # RPC Signals
 func _on_player_connected(peer_id, player_name, ready_value):
@@ -63,17 +63,12 @@ func _on_player_disconnected(peer_id):
 		player_labels.erase(peer_id)
 		
 func _on_player_ready_changed(peer_id, value):
-	print(multiplayer.get_unique_id())
-	print("Player with peer_id: ", peer_id, "  has changed their ready state to: ", value)
-	print(player_labels)
 	if player_labels.has(peer_id):
 		var label = player_labels[peer_id]
 		if value:
 			label.add_theme_color_override("font_color", Color.GREEN)
 		else:
 			label.add_theme_color_override("font_color", Color.WHITE)
-			
-	print(SessionData.is_all_ready())
 			
 	if SessionData.is_all_ready():
 		$StartGame.disabled = false
