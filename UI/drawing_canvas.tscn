@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://6ncj3v47j56d"]
+
+[node name="DrawingCanvas" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0

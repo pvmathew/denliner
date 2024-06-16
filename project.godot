@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerData="*res://Global/player_data.gd"
 SessionData="*res://Global/session_data.gd"
+GameData="*res://Global/game_data.gd"
 
 [display]
 
@@ -28,3 +29,4 @@ window/size/viewport_height=1080
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.14902, 0.219608, 0.333333, 1)

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bs3bsjtfhyaak"]
+[gd_scene load_steps=3 format=3 uid="uid://bs3bsjtfhyaak"]
 
 [ext_resource type="Script" path="res://Scenes/ThemeSelection/theme_selection.gd" id="1_yii6x"]
+
+[sub_resource type="Theme" id="Theme_rw0qs"]
+default_font_size = 40
 
 [node name="ThemeSelection" type="Node2D"]
 script = ExtResource("1_yii6x")
@@ -29,3 +32,13 @@ offset_top = 508.0
 offset_right = 1127.0
 offset_bottom = 531.0
 text = "Host is selecting a theme..."
+
+[node name="Topic" type="Label" parent="."]
+offset_left = 764.0
+offset_top = 194.0
+offset_right = 888.0
+offset_bottom = 249.0
+theme = SubResource("Theme_rw0qs")
+text = "Topic :"
+
+[connection signal="pressed" from="ThemeList/どうぶつ" to="." method="_on_どうぶつ_pressed"]
