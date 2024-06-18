@@ -9,6 +9,7 @@ func _ready():
 	http_request.request_completed.connect(_on_request_completed)
 
 	if PlayerData.is_host:
+		$Topic.visible = true
 		$ThemeList.visible = true
 	else:
 		$LobbyDisclaimer.visible = true
@@ -25,6 +26,7 @@ func _on_request_completed(result, response_code, headers, body):
 	GameData.topic = topic
 	$Topic.text = topic
 	
+	rpc("status_update", Status.Thinking)
 	start_timer()
 
 func start_timer():
@@ -39,4 +41,16 @@ func _on_timeout():
 	print("time has run out, showing canvas")
 	# This method is called when the timer expires
 	# Change to your desired scene after 10 seconds
+	rpc("status_update", Status.Drawing)
 	get_tree().change_scene_to_file("res://Scenes/Drawing/first_drawing.tscn")
+
+enum Status { Thinking, Drawing }
+
+@rpc("any_peer")
+func status_update(status):
+	if status == Status.Thinking:
+		$LobbyDisclaimer.text = "Host is thinking very hard..."
+	elif status == Status.Drawing:
+		$LobbyDisclaimer.text = "Host is drawing!"
+	
+

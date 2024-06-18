@@ -34,6 +34,7 @@ offset_bottom = 531.0
 text = "Host is selecting a theme..."
 
 [node name="Topic" type="Label" parent="."]
+visible = false
 offset_left = 764.0
 offset_top = 194.0
 offset_right = 888.0

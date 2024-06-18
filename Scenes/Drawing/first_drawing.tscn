@@ -48,3 +48,5 @@ grow_vertical = 1
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
