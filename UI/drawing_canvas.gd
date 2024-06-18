@@ -25,15 +25,11 @@ func _process(_delta):
 			current_line = []
 	queue_redraw()
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 func my_draw_polyline(line: Array):
 	if line.is_empty():
 		pass
 	if len(line) > 1:
+		print(line)
 		draw_polyline(line, color, width)
 	else:
 		draw_circle(line.back(), width, color)
