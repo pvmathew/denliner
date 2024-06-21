@@ -8,7 +8,6 @@ var color : Color = Color.GREEN
 
 var _point2 : Vector2
 
-var lines = []
 var current_line = []
 
 func _ready():
@@ -24,7 +23,7 @@ func _process(_delta):
 				current_line.push_back(mouse_position)
 	else:
 		if not current_line.is_empty():
-			lines.push_back(current_line)
+			GameData.drawing.push_back(current_line)
 			current_line = []
 	queue_redraw()
 
@@ -32,13 +31,12 @@ func my_draw_polyline(line: Array):
 	if line.is_empty():
 		pass
 	if len(line) > 1:
-		print(line)
 		draw_polyline(line, color, width)
 	else:
 		draw_circle(line.back(), width, color)
 
 func _draw():
-	for line in lines:
+	for line in GameData.drawing:
 		my_draw_polyline(line)
 	if not current_line.is_empty():
 		my_draw_polyline(current_line)
