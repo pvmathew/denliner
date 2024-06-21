@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	$TopicPanel/Topic.text += GameData.topic
+	GameData.rpc("update_player_status", "drawing")
 	
 func _process(delta):
 	var time_left = $Timer.time_left

@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://ces80ustb677t"]
+[gd_scene load_steps=3 format=3 uid="uid://ces80ustb677t"]
+
+[ext_resource type="Script" path="res://Scenes/Standby/standby.gd" id="1_2v00j"]
+
+[sub_resource type="Theme" id="Theme_hptoe"]
+default_font_size = 30
 
 [node name="Standby" type="Control"]
 layout_mode = 3
@@ -7,8 +12,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2v00j")
 
-[node name="Label" type="Label" parent="."]
+[node name="StandBy" type="Label" parent="."]
 layout_mode = 0
 offset_left = 808.0
 offset_top = 56.0
@@ -16,4 +22,14 @@ offset_right = 1044.0
 offset_bottom = 139.0
 theme_override_font_sizes/font_size = 60
 text = "Standby
+"
+
+[node name="CurrentStatus" type="Label" parent="."]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 200.0
+offset_right = 1061.0
+offset_bottom = 242.0
+theme = SubResource("Theme_hptoe")
+text = "Some Text Here
 "
