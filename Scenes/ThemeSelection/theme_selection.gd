@@ -26,7 +26,7 @@ func _on_request_completed(result, response_code, headers, body):
 	GameData.topic = topic
 	$Topic.text = topic
 	
-	rpc("status_update", Status.Thinking)
+	rpc("move_to_standby")
 	start_timer()
 
 func start_timer():
@@ -41,16 +41,13 @@ func _on_timeout():
 	print("time has run out, showing canvas")
 	# This method is called when the timer expires
 	# Change to your desired scene after 10 seconds
-	rpc("status_update", Status.Drawing)
 	get_tree().change_scene_to_file("res://Scenes/Drawing/first_drawing.tscn")
+	
 
 enum Status { Thinking, Drawing }
 
 @rpc("any_peer")
-func status_update(status):
-	if status == Status.Thinking:
-		$LobbyDisclaimer.text = "Host is thinking very hard..."
-	elif status == Status.Drawing:
-		$LobbyDisclaimer.text = "Host is drawing!"
+func move_to_standby():
+	get_tree().change_scene_to_file("res://Scenes/Standby/standby.tscn")
 	
 
