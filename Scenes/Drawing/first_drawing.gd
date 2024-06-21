@@ -10,4 +10,4 @@ func _process(delta):
 
 func _on_timer_timeout():
 	GameData.drawing_timer_ended.emit()
-	
+	$TimeUpPanel.visible = true

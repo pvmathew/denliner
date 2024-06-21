@@ -13,6 +13,7 @@ default_font_size = 40
 script = ExtResource("1_kl1rj")
 
 [node name="TopicPanel" type="Panel" parent="."]
+z_index = 1
 offset_left = 692.0
 offset_top = 27.0
 offset_right = 1050.0
@@ -35,6 +36,24 @@ offset_bottom = 119.0
 theme = SubResource("Theme_xy3l7")
 text = "Time Left"
 
+[node name="TimeUpPanel" type="Panel" parent="."]
+visible = false
+z_index = 1
+offset_left = 364.0
+offset_top = 187.0
+offset_right = 1560.0
+offset_bottom = 881.0
+
+[node name="TimeUp" type="Label" parent="TimeUpPanel"]
+layout_mode = 0
+offset_left = 14.0
+offset_right = 1188.0
+offset_bottom = 679.0
+theme = SubResource("Theme_pg172")
+text = "Time Up!	"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="DrawingCanvas" parent="." instance=ExtResource("2_ni5ja")]
 custom_minimum_size = Vector2(500, 500)
 anchors_preset = 0
@@ -44,6 +63,7 @@ offset_right = 1920.0
 offset_bottom = 1079.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
