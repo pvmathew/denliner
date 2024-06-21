@@ -1,5 +1,6 @@
 extends Control
 
+var timer_ended = false
 
 var point1 : Vector2 = Vector2(0, 0)
 var width : int = 10
@@ -8,12 +9,14 @@ var color : Color = Color.GREEN
 var _point2 : Vector2
 
 var lines = []
-
 var current_line = []
+
+func _ready():
+	GameData.drawing_timer_ended.connect(_on_drawing_timer_ended)
 
 func _process(_delta):
 	var mouse_position = get_viewport().get_mouse_position()
-	if Input.is_mouse_button_pressed( 1 ):
+	if Input.is_mouse_button_pressed( 1 ) and !timer_ended:
 		if current_line.is_empty():
 			current_line.push_back(mouse_position)
 		else:
@@ -39,3 +42,6 @@ func _draw():
 		my_draw_polyline(line)
 	if not current_line.is_empty():
 		my_draw_polyline(current_line)
+		
+func _on_drawing_timer_ended():
+	timer_ended = true

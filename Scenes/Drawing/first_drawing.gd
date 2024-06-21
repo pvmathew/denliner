@@ -9,4 +9,5 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	GameData.drawing_timer_ended.emit()
+	
