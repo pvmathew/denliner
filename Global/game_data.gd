@@ -1,6 +1,7 @@
 extends Node
 
 signal drawing_timer_ended
+signal peek_timer_ended
 signal player_status_update
 
 var topic = ""
@@ -38,6 +39,10 @@ func _on_drawing_timer_ended():
 	
 	var next_in_line = peer_ids.pick_random()
 	pass_along_drawing.rpc_id(next_in_line, drawing)
+	
+func end_peeking():
+	drawing = []
+	peek_timer_ended.emit()
 	
 @rpc("any_peer", "call_local")
 func save_drawing_rpc(drawing):

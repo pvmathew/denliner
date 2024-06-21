@@ -12,20 +12,22 @@ var current_line = []
 
 func _ready():
 	GameData.drawing_timer_ended.connect(_on_drawing_timer_ended)
+	GameData.peek_timer_ended.connect(_on_peek_timer_ended)
 
 func _process(_delta):
-	var mouse_position = get_viewport().get_mouse_position()
-	if Input.is_mouse_button_pressed( 1 ) and !timer_ended:
-		if current_line.is_empty():
-			current_line.push_back(mouse_position)
-		else:
-			if mouse_position != current_line.back():
+	if self.visible:
+		var mouse_position = get_viewport().get_mouse_position()
+		if Input.is_mouse_button_pressed( 1 ) and !timer_ended:
+			if current_line.is_empty():
 				current_line.push_back(mouse_position)
-	else:
-		if not current_line.is_empty():
-			GameData.drawing.push_back(current_line)
-			current_line = []
-	queue_redraw()
+			else:
+				if mouse_position != current_line.back():
+					current_line.push_back(mouse_position)
+		else:
+			if not current_line.is_empty():
+				GameData.drawing.push_back(current_line)
+				current_line = []
+		queue_redraw()
 
 func my_draw_polyline(line: Array):
 	if line.is_empty():
@@ -43,3 +45,6 @@ func _draw():
 		
 func _on_drawing_timer_ended():
 	timer_ended = true
+
+func _on_peek_timer_ended():
+	self.visible = true
