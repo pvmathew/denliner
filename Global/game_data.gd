@@ -16,6 +16,7 @@ var peek_drawing = []
 
 func _ready():
 	drawing_timer_ended.connect(_on_drawing_timer_ended)
+	peek_timer_ended.connect(_on_peek_timer_ended)
 	
 @rpc("any_peer")
 func update_player_status(status):
@@ -40,9 +41,9 @@ func _on_drawing_timer_ended():
 	var next_in_line = peer_ids.pick_random()
 	pass_along_drawing.rpc_id(next_in_line, drawing)
 	
-func end_peeking():
+func _on_peek_timer_ended():
+	print("in on peek timer ended")
 	drawing = []
-	peek_timer_ended.emit()
 	
 @rpc("any_peer", "call_local")
 func save_drawing_rpc(drawing):

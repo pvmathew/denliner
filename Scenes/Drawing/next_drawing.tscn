@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdtmnxf6x7xlv"]
+[gd_scene load_steps=5 format=3 uid="uid://bdtmnxf6x7xlv"]
 
 [ext_resource type="Script" path="res://Scenes/Drawing/next_drawing.gd" id="1_3g8a7"]
 [ext_resource type="PackedScene" uid="uid://ctd8k6cgrbqce" path="res://UI/peek_canvas.tscn" id="2_ultp7"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="Theme" id="Theme_g2viw"]
 default_font_size = 40
-
-[sub_resource type="Theme" id="Theme_qjigd"]
-default_font_size = 50
 
 [node name="NextDrawing" type="Control"]
 layout_mode = 3
@@ -35,15 +32,7 @@ offset_bottom = 67.0
 theme = SubResource("Theme_g2viw")
 text = "00s"
 
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 21.0
-offset_right = 808.0
-offset_bottom = 69.0
-theme = SubResource("Theme_qjigd")
-text = "The previous drawing:"
-
-[node name="Timer" type="Timer" parent="."]
+[node name="PeekTimer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
 autostart = true
@@ -63,4 +52,9 @@ offset_top = 2.0
 offset_right = 8.0
 offset_bottom = 2.0
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="DrawingTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[connection signal="timeout" from="PeekTimer" to="." method="_on_peek_timer_timeout"]
+[connection signal="timeout" from="DrawingTimer" to="." method="_on_drawing_timer_timeout"]
