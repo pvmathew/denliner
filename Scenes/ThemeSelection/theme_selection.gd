@@ -26,7 +26,7 @@ func _on_request_completed(result, response_code, headers, body):
 	GameData.topic = topic
 	$Topic.text = topic
 	
-	rpc("move_to_standby")
+	rpc("move_to_standby", topic)
 	start_timer()
 
 func start_timer():
@@ -47,7 +47,8 @@ func _on_timeout():
 enum Status { Thinking, Drawing }
 
 @rpc("any_peer")
-func move_to_standby():
+func move_to_standby(topic):
+	GameData.topic = topic
 	get_tree().change_scene_to_file("res://Scenes/Standby/standby.tscn")
 	
 

@@ -37,9 +37,16 @@ func _on_drawing_timer_ended():
 		peer_ids.erase(id)
 	
 	peer_ids.erase(my_peer_id)
-	
 	var next_in_line = peer_ids.pick_random()
-	pass_along_drawing.rpc_id(next_in_line, drawing)
+	
+	print("next players left to choose from")
+	print(peer_ids)
+	
+	if peer_ids.size() == 1:
+		print("only one peer left, calling show guessing screen with peer id", next_in_line )
+		show_guessing_screen.rpc_id(next_in_line, drawing)
+	else:
+		pass_along_drawing.rpc_id(next_in_line, drawing)
 	
 func _on_peek_timer_ended():
 	print("in on peek timer ended")
@@ -50,9 +57,16 @@ func save_drawing_rpc(drawing):
 	var sender_id = multiplayer.get_remote_sender_id()
 	drawings[sender_id] = drawing
 	
-@rpc("any_peer")
+@rpc("any_peer", "reliable")
 func pass_along_drawing(drawing):
+	print("show_pass along drawing")
 	# show drawing to the next peer in line here
 	peek_drawing = drawing
 	get_tree().change_scene_to_file("res://Scenes/Drawing/next_drawing.tscn")
 	
+@rpc("any_peer", "reliable")
+func show_guessing_screen(drawing):
+	print("show_guessing_screen")
+	# show drawing to the final peer in line
+	peek_drawing = drawing
+	get_tree().change_scene_to_file("res://Scenes/Guessing/guessing_screen.tscn")
