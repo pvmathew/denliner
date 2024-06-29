@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://crh83h6ruj0f"]
+
+[ext_resource type="Script" path="res://Scenes/IntroSetup/question_container.gd" id="1_k8pqn"]
+[ext_resource type="PackedScene" uid="uid://d2el8wms0ivo7" path="res://Scenes/IntroSetup/question_1.tscn" id="2_d53b3"]
+[ext_resource type="PackedScene" uid="uid://djh10yoodx8cu" path="res://Scenes/IntroSetup/question_2.tscn" id="2_kpm7m"]
+
+[node name="IntroSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.941176)
+
+[node name="QuestionContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k8pqn")
+
+[node name="Question 2" parent="ColorRect/QuestionContainer" instance=ExtResource("2_kpm7m")]
+visible = false
+layout_mode = 2
+
+[node name="Question 1" parent="ColorRect/QuestionContainer" instance=ExtResource("2_d53b3")]
+visible = false
+layout_mode = 2
