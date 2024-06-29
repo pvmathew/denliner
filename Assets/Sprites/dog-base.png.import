@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3e3l81fn738i"
-path="res://.godot/imported/dog-base.png-8e1e6735463f358dc9f5926a78de7d7c.ctex"
+path="res://.godot/imported/dog-base.png-4ae2f9e4e1fb3efe394429f8cf5d54d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/dog-base.png"
-dest_files=["res://.godot/imported/dog-base.png-8e1e6735463f358dc9f5926a78de7d7c.ctex"]
+source_file="res://Assets/Sprites/dog-base.png"
+dest_files=["res://.godot/imported/dog-base.png-4ae2f9e4e1fb3efe394429f8cf5d54d0.ctex"]
 
 [params]
 
