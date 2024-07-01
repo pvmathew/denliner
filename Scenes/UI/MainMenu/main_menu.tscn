@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ns22uoxll5vd"]
 
-[ext_resource type="Script" path="res://Scenes/MainMenu/main_menu.gd" id="1_1qi15"]
+[ext_resource type="Script" path="res://Scenes/UI/MainMenu/main_menu.gd" id="1_1qi15"]
 
 [sub_resource type="Theme" id="Theme_tbfaw"]
 default_font_size = 40

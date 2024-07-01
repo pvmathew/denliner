@@ -2,7 +2,7 @@ extends Node2D
 
 const JOIN_SCENE_PATH = "res://Scenes/Join/Join.tcsn"
 
-var nickname_manager = preload("res://Scenes/MainMenu/nickname_manager.gd").new()
+var nickname_manager = preload("res://Scenes/UI/nickname_manager.gd").new()
 var nickname = nickname_manager.load_nickname()
 
 func _ready():

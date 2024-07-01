@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnuwj03ysdoqr"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Onboarding/QuestionContainer.gd" id="1_bil2m"]
+[ext_resource type="PackedScene" uid="uid://djh10yoodx8cu" path="res://Scenes/UI/Onboarding/question_2.tscn" id="2_losxe"]
+[ext_resource type="PackedScene" uid="uid://d2el8wms0ivo7" path="res://Scenes/UI/Onboarding/question_1.tscn" id="2_uniwm"]
+
+[node name="Onboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.941176)
+
+[node name="QuestionContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bil2m")
+
+[node name="Question 2" parent="ColorRect/QuestionContainer" instance=ExtResource("2_losxe")]
+visible = false
+layout_mode = 2
+
+[node name="Question 1" parent="ColorRect/QuestionContainer" instance=ExtResource("2_uniwm")]
+layout_mode = 2
