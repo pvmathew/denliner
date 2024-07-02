@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const JOIN_SCENE_PATH = "res://Scenes/Join/Join.tcsn"
 
