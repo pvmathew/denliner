@@ -1,12 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://ns22uoxll5vd"]
+[gd_scene load_steps=12 format=3 uid="uid://ns22uoxll5vd"]
 
 [ext_resource type="Script" path="res://Scenes/UI/MainMenu/main_menu.gd" id="1_1qi15"]
 [ext_resource type="Shader" path="res://Scenes/UI/MainMenu/scroll.gdshader" id="2_f4os3"]
+[ext_resource type="Texture2D" uid="uid://dhxvrche28fmd" path="res://Assets/Sprites/cloud-1.png" id="3_nbu18"]
 [ext_resource type="Texture2D" uid="uid://cqn51d7e4k0su" path="res://Assets/Sprites/pattern.png" id="3_wqehi"]
+[ext_resource type="Texture2D" uid="uid://dori7xs3pfvur" path="res://Assets/Sprites/cloud-pattern.png" id="4_chnil"]
+[ext_resource type="Texture2D" uid="uid://c7s3xoiatlvmf" path="res://Assets/Sprites/cloud-2.png" id="5_sg88r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bp116"]
+shader = ExtResource("2_f4os3")
+shader_parameter/speed = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a352"]
+shader = ExtResource("2_f4os3")
+shader_parameter/speed = 0.025
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hor4t"]
+shader = ExtResource("2_f4os3")
+shader_parameter/speed = 0.035
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8r6q"]
 shader = ExtResource("2_f4os3")
-shader_parameter/speed = 0.1
+shader_parameter/speed = 0.05
 
 [sub_resource type="Theme" id="Theme_tbfaw"]
 default_font_size = 40
@@ -28,6 +43,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72549, 0.937255, 0.992157, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bp116")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nbu18")
+stretch_mode = 6
+
+[node name="BGPattern2" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5a352")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_chnil")
+stretch_mode = 6
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hor4t")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_sg88r")
+stretch_mode = 6
 
 [node name="BGPattern" type="TextureRect" parent="."]
 texture_repeat = 2
