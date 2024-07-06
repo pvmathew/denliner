@@ -1,8 +1,0 @@
-shader_type canvas_item;
-
-uniform float height = 5.0;
-uniform float speed = 2.5;
-
-void vertex() {
-	VERTEX.y += height * sin(speed*TIME);
-}
