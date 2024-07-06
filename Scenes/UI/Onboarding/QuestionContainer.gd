@@ -2,6 +2,7 @@ extends CenterContainer
 
 @onready var questions = [$"Question 1", $"Question 2"]
 
+
 var curr_index = 0
 
 func _ready():
@@ -16,4 +17,4 @@ func show_next_question():
 	else:
 		PlayerData.is_onboarded = true
 		PlayerData.save_player_data()
-		get_tree().change_scene_to_file("res://Scenes/UI/MainMenu/main_menu.tscn")
+		%AnimationPlayer.play("fade_out")
