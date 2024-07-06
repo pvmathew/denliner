@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _ready():
-	print(PlayerData.is_onboarded)
+	PlayerData.load_player_data()
 	if PlayerData.is_onboarded:
-		$Control/Onboarding.hide()
+		$Control/Onboard.hide()
 		

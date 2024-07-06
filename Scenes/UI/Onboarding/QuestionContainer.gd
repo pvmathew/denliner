@@ -15,5 +15,5 @@ func show_next_question():
 		questions[curr_index].show()
 	else:
 		PlayerData.is_onboarded = true
+		PlayerData.save_player_data()
 		get_tree().change_scene_to_file("res://Scenes/UI/MainMenu/main_menu.tscn")
-		#get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")

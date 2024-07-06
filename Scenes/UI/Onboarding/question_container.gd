@@ -13,4 +13,6 @@ func show_next_question():
 	if curr_index < questions.size():
 		questions[curr_index].show()
 	else:
-		#get_tree().change_scene_to_file("res://Scenes/MainMenu/main_menu.tscn")
+		PlayerData.is_onboarded = true
+		PlayerData.save_player_data()
+		$".".hide()

@@ -46,7 +46,7 @@ shader_parameter/transparency_threshold = 0.1
 [sub_resource type="Theme" id="Theme_tbfaw"]
 default_font_size = 40
 
-[node name="Control" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +55,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1qi15")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BG" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skybox" type="ColorRect" parent="BG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.72549, 0.937255, 0.992157, 1)
 
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="Clouds-3" type="TextureRect" parent="BG"]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_bp116")
 layout_mode = 1
@@ -76,7 +84,7 @@ grow_vertical = 2
 texture = ExtResource("3_nbu18")
 stretch_mode = 6
 
-[node name="BGPattern2" type="TextureRect" parent="."]
+[node name="Clouds-2" type="TextureRect" parent="BG"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_5a352")
 layout_mode = 1
@@ -88,7 +96,7 @@ grow_vertical = 2
 texture = ExtResource("4_chnil")
 stretch_mode = 6
 
-[node name="TextureRectShadow" type="TextureRect" parent="."]
+[node name="Clouds-1-Shadow" type="TextureRect" parent="BG"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ad0cy")
 layout_mode = 1
@@ -100,7 +108,7 @@ grow_vertical = 2
 texture = ExtResource("5_sg88r")
 stretch_mode = 6
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="Clouds-1" type="TextureRect" parent="BG"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_hor4t")
 layout_mode = 1
@@ -112,7 +120,7 @@ grow_vertical = 2
 texture = ExtResource("5_sg88r")
 stretch_mode = 6
 
-[node name="BGPatternShadow" type="TextureRect" parent="."]
+[node name="Front-Shadow" type="TextureRect" parent="BG"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_ptbtu")
 layout_mode = 1
@@ -128,7 +136,7 @@ texture = ExtResource("9_knln7")
 stretch_mode = 6
 script = ExtResource("8_3g4m6")
 
-[node name="BGPattern" type="TextureRect" parent="."]
+[node name="Front" type="TextureRect" parent="BG"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_g8r6q")
 layout_mode = 1
@@ -185,3 +193,21 @@ offset_top = 313.0
 offset_right = 866.0
 offset_bottom = 336.0
 text = "Name:"
+
+[node name="Type" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1148.0
+offset_top = 313.0
+offset_right = 1188.0
+offset_bottom = 336.0
+
+[node name="ResetSettings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 969.0
+offset_right = 277.0
+offset_bottom = 1059.0
+text = "Reset Settings"
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="ResetSettings" to="." method="_on_reset_settings_pressed"]

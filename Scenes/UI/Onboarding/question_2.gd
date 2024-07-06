@@ -54,11 +54,13 @@ func _on_dog_mouse_exited():
 
 func _on_cat_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		PlayerData.type = "cat"
 		anim.play("fade_out_all")
 
 
 func _on_dog_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		PlayerData.type = "dog"
 		anim.play("fade_out_all")
 
 

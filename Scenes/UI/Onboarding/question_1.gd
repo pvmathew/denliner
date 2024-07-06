@@ -24,6 +24,7 @@ func _process(delta):
 
 
 func _on_ok_pressed():
+	PlayerData.nickname = name_input.text
 	anim.play("fade_out_all")
 
 
