@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ns22uoxll5vd"]
+[gd_scene load_steps=24 format=3 uid="uid://ns22uoxll5vd"]
 
 [ext_resource type="Script" path="res://Scenes/UI/MainMenu/main_menu.gd" id="1_1qi15"]
 [ext_resource type="Shader" path="res://Scenes/UI/MainMenu/scroll.gdshader" id="2_f4os3"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dori7xs3pfvur" path="res://Assets/Sprites/cloud-pattern.png" id="4_chnil"]
 [ext_resource type="Texture2D" uid="uid://c7s3xoiatlvmf" path="res://Assets/Sprites/cloud-2.png" id="5_sg88r"]
 [ext_resource type="Shader" path="res://Scenes/UI/MainMenu/scroll-shadowing.gdshader" id="7_dl8gp"]
-[ext_resource type="Script" path="res://Scenes/UI/MainMenu/BGPatternShadow.gd" id="8_3g4m6"]
+[ext_resource type="Script" path="res://Scenes/UI/MainMenu/Front-Shadow.gd" id="8_nbod5"]
 [ext_resource type="Texture2D" uid="uid://dfjtnouwf5jsd" path="res://Assets/Sprites/cloud-menu-panel.png" id="9_60lx5"]
 [ext_resource type="Texture2D" uid="uid://cmsnomq4cfg36" path="res://Assets/Sprites/pattern-2.png" id="9_knln7"]
 [ext_resource type="Shader" path="res://Scenes/UI/MainMenu/wavy-cloud-test.gdshader" id="10_kdd2n"]
@@ -33,12 +33,20 @@ shader = ExtResource("2_f4os3")
 shader_parameter/speed = 0.035
 shader_parameter/transparency_threshold = 0.1
 
+[sub_resource type="Gradient" id="Gradient_04ebl"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_58esx"]
+gradient = SubResource("Gradient_04ebl")
+width = 2000
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ptbtu"]
 shader = ExtResource("7_dl8gp")
 shader_parameter/speed = 0.05
 shader_parameter/transparency_threshold = 0.1
 shader_parameter/shadow_offset = Vector2(0.05, 0.025)
 shader_parameter/shadow_color = Vector4(0, 0, 0, 0.1)
+shader_parameter/background_texture = SubResource("GradientTexture1D_58esx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g8r6q"]
 shader = ExtResource("2_f4os3")
@@ -55,6 +63,20 @@ texture = ExtResource("9_60lx5")
 
 [sub_resource type="Theme" id="Theme_tbfaw"]
 default_font_size = 40
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3out"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72ov8"]
+bg_color = Color(0.909804, 0.909804, 0.909804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.870588, 0.870588, 0.870588, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -144,7 +166,8 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 texture = ExtResource("9_knln7")
 stretch_mode = 6
-script = ExtResource("8_3g4m6")
+script = ExtResource("8_nbod5")
+texture_path = null
 
 [node name="Front" type="TextureRect" parent="BG"]
 texture_repeat = 2
@@ -162,6 +185,7 @@ texture = ExtResource("9_knln7")
 stretch_mode = 6
 
 [node name="CloudPanel" type="PanelContainer" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_ympxs")
 layout_mode = 0
 offset_left = 679.0
@@ -172,51 +196,65 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5xngb")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 934.0
-offset_top = 217.0
-offset_right = 1065.0
-offset_bottom = 272.0
+offset_left = 949.0
+offset_top = 475.0
+offset_right = 1080.0
+offset_bottom = 530.0
 theme = SubResource("Theme_tbfaw")
 text = "Game?"
 
 [node name="Host" type="Button" parent="."]
+material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
-offset_left = 902.0
-offset_top = 379.0
-offset_right = 1089.0
-offset_bottom = 503.0
-text = "Host
-"
+offset_left = 914.0
+offset_top = 634.0
+offset_right = 1101.0
+offset_bottom = 699.0
+theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
+text = "ホスト"
 
 [node name="Join" type="Button" parent="."]
+material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
-offset_left = 900.0
-offset_top = 524.0
-offset_right = 1092.0
-offset_bottom = 643.0
-text = "Join"
+offset_left = 913.0
+offset_top = 712.0
+offset_right = 1100.0
+offset_bottom = 777.0
+theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
+text = "ジョイン"
 
-[node name="Close" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
+material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
-offset_left = 899.0
-offset_top = 665.0
-offset_right = 1091.0
-offset_bottom = 800.0
-text = "Close"
+offset_left = 913.0
+offset_top = 787.0
+offset_right = 1100.0
+offset_bottom = 852.0
+theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
+text = "Quit"
 
 [node name="NicknameInput" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 876.0
-offset_top = 309.0
-offset_right = 1119.0
-offset_bottom = 340.0
+offset_left = 891.0
+offset_top = 577.0
+offset_right = 1134.0
+offset_bottom = 608.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 815.0
-offset_top = 313.0
-offset_right = 866.0
-offset_bottom = 336.0
+offset_left = 902.0
+offset_top = 542.0
+offset_right = 953.0
+offset_bottom = 565.0
 text = "Name:"
 
 [node name="Type" type="Label" parent="."]
@@ -234,5 +272,4 @@ offset_right = 277.0
 offset_bottom = 1059.0
 text = "Reset Settings"
 
-[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ResetSettings" to="." method="_on_reset_settings_pressed"]
