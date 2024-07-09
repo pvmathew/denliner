@@ -17,7 +17,7 @@ void fragment() {
 
     // Sample the background texture at the same UV coordinates
     vec4 color_background = texture(background_texture, UV);
-	
+
     // Check if the background texture is not fully transparent
     if (color_background.a > transparency_threshold) {
         COLOR = colored_shadow;
