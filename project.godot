@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 PlayerData="*res://Global/player_data.gd"
 SessionData="*res://Global/session_data.gd"
 GameData="*res://Global/game_data.gd"
+SteamLobbyData="*res://Global/steam_lobby_data.gd"
 SteamData="*res://Global/steam_data.gd"
 
 [debug]
@@ -38,3 +39,4 @@ window/size/resizable=false
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.133333, 0.133333, 0.133333, 0.941176)
+environment/enable_file_logging=false

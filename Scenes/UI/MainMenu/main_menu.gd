@@ -26,3 +26,8 @@ func _on_join_pressed():
 
 func _on_reset_settings_pressed():
 	PlayerData.reset_player_data()
+
+
+func _on_create_lobby_pressed() -> void:
+	print("Creating steam lobby")
+	SteamLobbyData.create_lobby()
