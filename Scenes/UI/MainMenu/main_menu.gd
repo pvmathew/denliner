@@ -7,9 +7,6 @@ func _ready():
 	$NicknameInput.text = PlayerData.nickname
 	$Type.text = PlayerData.type
 
-func _process(float):
-	print(PlayerData.nickname)
-
 
 func _on_close_pressed():
 	get_tree().quit()
