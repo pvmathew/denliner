@@ -286,4 +286,5 @@ offset_bottom = 1059.0
 text = "Reset Settings"
 
 [connection signal="pressed" from="CreateLobby" to="." method="_on_create_lobby_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ResetSettings" to="." method="_on_reset_settings_pressed"]
