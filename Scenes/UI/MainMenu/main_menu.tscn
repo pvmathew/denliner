@@ -290,12 +290,30 @@ offset_top = 313.0
 offset_right = 1188.0
 offset_bottom = 336.0
 
+[node name="Lobbies" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 299.0
+offset_right = 1204.0
+offset_bottom = 794.0
+
+[node name="Scroll" type="ScrollContainer" parent="Lobbies"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="List" type="VBoxContainer" parent="Lobbies/Scroll"]
+layout_mode = 2
+
 [node name="ResetSettings" type="Button" parent="."]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 969.0
-offset_right = 277.0
-offset_bottom = 1059.0
+offset_left = 173.0
+offset_top = 959.0
+offset_right = 424.0
+offset_bottom = 1049.0
 text = "Reset Settings"
 
 [connection signal="pressed" from="CreateLobby" to="." method="_on_create_lobby_pressed"]
