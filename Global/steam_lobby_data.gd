@@ -133,7 +133,7 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		Steam.setLobbyJoinable(lobby_id, true)
 
 		# Set some lobby data
-		Steam.setLobbyData(lobby_id, "name", "Gramps' Lobby")
+		Steam.setLobbyData(lobby_id, "name", "Denliner Lobby 1")
 		Steam.setLobbyData(lobby_id, "mode", "GodotSteam test")
 
 		# Allow P2P connections to fallback to being relayed through Steam if needed
@@ -141,11 +141,13 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		print("Allowing Steam to be relay backup: %s" % set_relay)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
-	for this_lobby in these_lobbies:
-		var lobby_name: String = Steam.getLobbyData(this_lobby, "name")
-		var lobby_mode: String = Steam.getLobbyData(this_lobby, "mode")
-		print("Lobby found with name: "+ lobby_name)
-		
+	pass
+	#print(these_lobbies)
+	#for this_lobby in these_lobbies:
+		#var lobby_name: String = Steam.getLobbyData(this_lobby, "name")
+		#var lobby_mode: String = Steam.getLobbyData(this_lobby, "mode")
+		#print("Lobby found with name: "+ lobby_name)
+		#
 		## Pull lobby data from Steam, these are specific to our example
 		#var lobby_name: String = Steam.getLobbyData(this_lobby, "name")
 		#var lobby_mode: String = Steam.getLobbyData(this_lobby, "mode")

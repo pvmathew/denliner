@@ -229,6 +229,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
 text = "Create Lobby
 "
 
+[node name="LobbyList" type="Button" parent="."]
+material = SubResource("ShaderMaterial_e3out")
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 552.0
+offset_right = 1461.0
+offset_bottom = 617.0
+theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
+text = "Lobby List"
+
 [node name="Join" type="Button" parent="."]
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
@@ -286,5 +299,6 @@ offset_bottom = 1059.0
 text = "Reset Settings"
 
 [connection signal="pressed" from="CreateLobby" to="." method="_on_create_lobby_pressed"]
+[connection signal="pressed" from="LobbyList" to="." method="_on_lobby_list_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="ResetSettings" to="." method="_on_reset_settings_pressed"]
