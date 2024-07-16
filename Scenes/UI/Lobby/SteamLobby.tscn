@@ -46,3 +46,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ChatLog" type="TextEdit" parent="."]
+offset_left = 461.0
+offset_top = 848.0
+offset_right = 1447.0
+offset_bottom = 973.0
+editable = false
+
+[node name="MessageInput" type="LineEdit" parent="."]
+offset_left = 486.0
+offset_top = 996.0
+offset_right = 1338.0
+offset_bottom = 1058.0
+
+[node name="Send" type="Button" parent="."]
+offset_left = 1363.0
+offset_top = 1003.0
+offset_right = 1450.0
+offset_bottom = 1046.0
+text = "Send
+"
+
+[connection signal="pressed" from="Send" to="." method="_on_send_pressed"]

@@ -20,7 +20,6 @@ func _ready() -> void:
 	#Steam.lobby_invite.connect(_on_lobby_invite)
 	#Steam.lobby_joined.connect(_on_lobby_joined)
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
-	#Steam.lobby_message.connect(_on_lobby_message)
 	#Steam.persona_state_change.connect(_on_persona_change)
 
 	# Check for command line arguments
