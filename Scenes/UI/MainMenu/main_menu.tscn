@@ -88,6 +88,7 @@ grow_vertical = 2
 script = ExtResource("1_1qi15")
 
 [node name="BG" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -194,6 +195,7 @@ offset_bottom = 950.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_5xngb")
 
 [node name="Title" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 949.0
 offset_top = 475.0
@@ -203,6 +205,7 @@ theme = SubResource("Theme_tbfaw")
 text = "Game?"
 
 [node name="Host" type="Button" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
 offset_left = 914.0
@@ -218,10 +221,10 @@ text = "ホスト"
 [node name="CreateLobby" type="Button" parent="."]
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
-offset_left = 1274.0
-offset_top = 436.0
-offset_right = 1461.0
-offset_bottom = 501.0
+offset_left = 391.0
+offset_top = 443.0
+offset_right = 578.0
+offset_bottom = 508.0
 theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 0
@@ -232,10 +235,10 @@ text = "Create Lobby
 [node name="LobbyList" type="Button" parent="."]
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
-offset_left = 1274.0
-offset_top = 552.0
-offset_right = 1461.0
-offset_bottom = 617.0
+offset_left = 391.0
+offset_top = 559.0
+offset_right = 578.0
+offset_bottom = 624.0
 theme_override_colors/font_color = Color(0.32549, 0.32549, 0.32549, 1)
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 0
@@ -243,6 +246,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
 text = "Lobby List"
 
 [node name="Join" type="Button" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
 offset_left = 913.0
@@ -256,6 +260,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
 text = "ジョイン"
 
 [node name="Quit" type="Button" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_e3out")
 layout_mode = 0
 offset_left = 913.0
@@ -269,6 +274,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_72ov8")
 text = "Quit"
 
 [node name="NicknameInput" type="LineEdit" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 891.0
 offset_top = 577.0
@@ -276,6 +282,7 @@ offset_right = 1134.0
 offset_bottom = 608.0
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 902.0
 offset_top = 542.0
@@ -292,10 +299,10 @@ offset_bottom = 336.0
 
 [node name="Lobbies" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 670.0
-offset_top = 299.0
-offset_right = 1204.0
-offset_bottom = 794.0
+offset_left = 713.0
+offset_top = 340.0
+offset_right = 1247.0
+offset_bottom = 835.0
 
 [node name="Scroll" type="ScrollContainer" parent="Lobbies"]
 layout_mode = 1

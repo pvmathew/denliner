@@ -4,6 +4,8 @@ const JOIN_SCENE_PATH = "res://Scenes/Join/Join.tcsn"
 
 func _ready():
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
+	Steam.lobby_created.connect(_on_lobby_created)
+
 	PlayerData.load_player_data()
 	$NicknameInput.text = PlayerData.nickname
 	$Type.text = PlayerData.type
@@ -37,10 +39,6 @@ func _on_create_lobby_pressed() -> void:
 func _on_lobby_list_pressed() -> void:
 	SteamLobbyData.request_lobby_List()
 	
-func _on_join_lobby_pressed(this_lobby_id: int) -> void:
-	SteamLobbyData.join_lobby(this_lobby_id)
-	
-
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	for this_lobby in these_lobbies:
 		print(this_lobby)
@@ -60,3 +58,9 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 #
 		## Add the new lobby to the list
 		$Lobbies/Scroll/List.add_child(lobby_button)
+		
+func join_lobby(this_lobby_id: int) -> void:
+	SteamLobbyData.join_lobby(this_lobby_id)
+	
+func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
+	get_tree().change_scene_to_file("res://Scenes/UI/Lobby/SteamLobby.tscn")

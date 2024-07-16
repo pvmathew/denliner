@@ -4,6 +4,8 @@ const PACKET_READ_LIMIT: int = 32
 
 var lobby_data
 var lobby_id: int = 0
+var lobby_name: String = ""
+
 var lobby_members: Array = []
 var lobby_members_max: int = 8
 var lobby_vote_kick: bool = false
@@ -128,12 +130,15 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		# Set the lobby ID
 		lobby_id = this_lobby_id
 		print("Created a lobby: %s" % lobby_id)
+		
 
 		# Set this lobby as joinable, just in case, though this should be done by default
 		Steam.setLobbyJoinable(lobby_id, true)
 
 		# Set some lobby data
-		Steam.setLobbyData(lobby_id, "name", "Denliner Lobby 1")
+		lobby_name = "Denliner Lobby 1"
+		
+		Steam.setLobbyData(lobby_id, "name", lobby_name)
 		Steam.setLobbyData(lobby_id, "mode", "GodotSteam test")
 
 		# Allow P2P connections to fallback to being relayed through Steam if needed
