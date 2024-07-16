@@ -64,7 +64,7 @@ func join_lobby(this_lobby_id: int) -> void:
 	# Make the lobby join request to Steam
 	Steam.joinLobby(this_lobby_id)
 	
-func get_lobby_members() -> void:
+func get_lobby_members() -> Array:
 	# Clear your previous lobby list
 	lobby_members.clear()
 
@@ -81,6 +81,8 @@ func get_lobby_members() -> void:
 
 		# Add them to the list
 		lobby_members.append({"steam_id":member_steam_id, "steam_name":member_steam_name})
+		
+	return lobby_members
 
 func make_p2p_handshake() -> void:
 	print("Sending P2P handshake to the lobby")
